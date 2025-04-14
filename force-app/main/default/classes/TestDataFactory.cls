@@ -128,10 +128,9 @@ public with sharing class TestDataFactory {
         insert TestDataFactory.constructOrderItems(cnt, lPricebookEntry, lOrder);
     }
     
-    public static void verifyQuantityOrdered(Product2 pOriginalProduct, Product2 pUpdatedProduct, Integer pQtdOrdered){
-        Integer sumQuantity = Integer.valueOf(pOriginalProduct.Quantity_Ordered__c) + pQtdOrdered;
-
-        Assert.areEqual(sumQuantity, pUpdatedProduct.Quantity_Ordered__c, 'A quantidade deveria ser ' + sumQuantity);
-    }    
+    public static void VerifyQuantityOrdered(Product2 originalProduct, Product2 updatedProduct, Integer qtyOrdered){
+        Integer sumQuantity = Integer.valueOf(originalProduct.Quantity_Ordered__c) + qtyOrdered;
+        Assert.areEqual(updatedProduct.Quantity_Ordered__c, sumQuantity, 'A quantidade deveria ser ' + updatedProduct.Quantity_Ordered__c);
+    }      
 
 }
