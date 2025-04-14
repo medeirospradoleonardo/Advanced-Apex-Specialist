@@ -38,9 +38,7 @@ public class Product2Extension {
             List<ProductWrapper> lProductWrapperFiltered = new List<ProductWrapper>();
 
             for(ProductWrapper eachPW : productsToInsert) {
-                if(!String.isBlank(eachPW.productRecord.Name) && !String.isBlank(eachPW.productRecord.Family) && eachPW.productRecord.Family != Constants.SELECT_ONE && eachPW.productRecord.isActive && eachPW.pricebookEntryRecord.UnitPrice != null && eachPW.pricebookEntryRecord.UnitPrice != 0 && eachPW.productRecord.Initial_Inventory__c != null && eachPW.productRecord.Initial_Inventory__c != 0) {
-                    lProductWrapperFiltered.add(eachPW);
-                }
+                lProductWrapperFiltered.add(eachPW);
             }
 
             for(ProductWrapper productWrapper : lProductWrapperFiltered) {

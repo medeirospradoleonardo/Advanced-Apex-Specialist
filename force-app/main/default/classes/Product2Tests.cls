@@ -46,4 +46,26 @@ private class Product2Tests {
         Assert.areEqual(1, lProduct.size(), 'O tamanho da lista createdProducts deveria ser 1');
     }
 
+    @isTest 
+    private static void Product2Trigger_UnitTest() {
+        Test.startTest();
+            Product2 product = new Product2();
+            product.Name = 'Test';
+            product.Family = 'Dessert';
+            product.IsActive = true;
+            product.Quantity_Ordered__c = 5;
+            product.Initial_Inventory__c = 10;
+            insert product;
+            
+            CollaborationGroup collaborationGroup = new CollaborationGroup();
+            collaborationGroup.Name = 'TEST' + Constants.INVENTORY_ANNOUNCEMENTS;
+            collaborationGroup.Description = 'Description';
+            collaborationGroup.CollaborationType = 'Public';
+            insert collaborationGroup;
+            
+            product.Quantity_Ordered__c = 96;
+            update product;
+        Test.stopTest();
+    } 
+
 }

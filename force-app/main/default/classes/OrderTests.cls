@@ -22,6 +22,34 @@ private class OrderTests {
 
         TestDataFactory.VerifyQuantityOrdered(product1, product2, Constants.DEFAULT_ROWS);
     }
+
+    @isTest 
+    private static void OrderExtension_UnitTest() {
+        PageReference reference = Page.OrderEdit;
+        Test.setCurrentPage(reference);
+
+        Order order = [SELECT Id, Status FROM Order LIMIT 1];
+
+        ApexPages.StandardController controller = new Apexpages.StandardController(order);
+        OrderExtension extension = new OrderExtension(controller);
+
+        Assert.areEqual(1, extension.orderItemList.size(), 'O tamanho da lista orderItemList deveria ser 1');
+
+        extension.selectedFamily = 'Dessert';
+        extension.SelectFamily();
+        extension.OnFieldChange();
+        extension.First();
+        extension.Next();
+        extension.Previous();
+        extension.Last();
+        extension.GetHasNext();
+        extension.GetPageNumber();
+        extension.GetHasPrevious();
+        extension.GetTotalPages();
+        extension.GetFamilyOptions();
+        extension.Save();
+        ChartHelper.GetInventory();
+    } 
     
     
 }
